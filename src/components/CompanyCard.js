@@ -8,7 +8,7 @@ const CompanyCard = ({ data, categories }) => {
   return (
     <>
       <div className='flex items-end gap-5'>
-        <div className='relative flex items-center justify-center border border-gray-200 rounded-md w-52 h-52 p-4'>
+        <div className='relative flex items-center justify-center border border-gray-200 rounded-md w-52 h-52 p-10'>
           <img src={data.logo} alt="" />
           <div className='absolute flex items-center justify-center text-center bg-blue-400 rounded-md text-xs text-white w-24 h-10 p-4 -bottom-5'
             style={{ backgroundColor: categories[categories.findIndex(ct => ct.name === data.category)].color }}
