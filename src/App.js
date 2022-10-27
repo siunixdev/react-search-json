@@ -49,7 +49,7 @@ function App() {
       const selectedCompany = []
       category.forEach(ct => {
         const index = datas.findIndex(data => data.category === ct)
-        if(index !== -1) {
+        if (index !== -1) {
           selectedCompany.push(datas[index])
         }
       });
@@ -90,27 +90,35 @@ function App() {
             </div>
           </div>
           <div className='col-span-2 lg:col-span-3'>
-            <div className='grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-8 md:gap-14'>
-              {
-                company.map((data, i) => (
-                  <div className='flex items-end gap-5' key={i}>
-                    <div className='relative flex items-center justify-center border border-gray-200 rounded-md w-52 h-52 p-4'>
-                      <img src={data.logo} alt="" />
-                      <div className='absolute flex items-center justify-center text-center bg-blue-400 rounded-md text-xs text-white w-24 h-10 p-4 -bottom-5'
-                        style={{ backgroundColor: categories[categories.findIndex(ct => ct.name === data.category)].color }}
-                      >
-                        {data.category}
+            {
+              company.length === 0 ? (
+                <div>
+                  <p className='text-center text-gray-500'>Sorry Can't find the data fro this category</p>
+                </div>
+              ) : (
+                <div className='grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-8 md:gap-14'>
+                  {
+                    company.map((data, i) => (
+                      <div className='flex items-end gap-5' key={i}>
+                        <div className='relative flex items-center justify-center border border-gray-200 rounded-md w-52 h-52 p-4'>
+                          <img src={data.logo} alt="" />
+                          <div className='absolute flex items-center justify-center text-center bg-blue-400 rounded-md text-xs text-white w-24 h-10 p-4 -bottom-5'
+                            style={{ backgroundColor: categories[categories.findIndex(ct => ct.name === data.category)].color }}
+                          >
+                            {data.category}
+                          </div>
+                        </div>
+                        <div className='bottom-0 w-96'>
+                          <h2 className='2xl font-bold mb-1'>{data.title}</h2>
+                          <p>{truncate(data.dascription, 15)}</p>
+                          <button className='mt-6 font-medium text-indigo-600 hover:text-indigo-700'>More info</button>
+                        </div>
                       </div>
-                    </div>
-                    <div className='bottom-0 w-96'>
-                      <h2 className='2xl font-bold mb-1'>{data.title}</h2>
-                      <p>{truncate(data.dascription, 15)}</p>
-                      <button className='mt-6 font-medium text-indigo-600 hover:text-indigo-700'>More info</button>
-                    </div>
-                  </div>
-                ))
-              }
-            </div>
+                    ))
+                  }
+                </div>
+              )
+            }
           </div>
         </div>
       </div>
