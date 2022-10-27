@@ -10,12 +10,14 @@ function App() {
   const [category, setCategory] = useState([])
 
   function handleSearch() {
-    const filtered = datas.filter(x => {
-      const arr = x.title.toLowerCase().split(' ');
-      return (arr.some(y => search.toLowerCase().includes(y)))
-    });
+    if(search.trim() !== '') {
+      const filtered = datas.filter(x => {
+        const arr = x.title.toLowerCase().split(' ');
+        return (arr.some(y => search.toLowerCase().includes(y)))
+      });
 
-    setCompany(filtered)
+      setCompany(filtered)
+    }
   }
 
   const handleKeyDown = (event) => {
